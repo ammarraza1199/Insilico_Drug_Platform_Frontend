@@ -1,0 +1,21 @@
+# Common ignores
+.DS_Store
+.vscode
+.env
+.idea
+*.log
+
+# Frontend (React/Vite)
+PreciousGPT_Frontend_Code/node_modules
+PreciousGPT_Frontend_Code/dist
+PreciousGPT_Frontend_Code/.env
+PreciousGPT_Frontend_Code/.env.local
+
+# Backend (Python)
+PreciousGPT_Backend_Code/__pycache__
+PreciousGPT_Backend_Code/*.pyc
+PreciousGPT_Backend_Code/venv
+PreciousGPT_Backend_Code/.env
+PreciousGPT_Backend_Code/.pytest_cache
+PreciousGPT_Backend_Code/instance
+PreciousGPT_Backend_Code/htmlcov
