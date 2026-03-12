@@ -1,4 +1,4 @@
-# PreciousGPT Platform — Backend Architecture Document
+# WallahGPT Platform — Backend Architecture Document
 
 **Document Type:** Backend Simulation Architecture & Implementation Specification  
 **Version:** 1.0.0  
@@ -31,7 +31,7 @@
 
 ### 1.1 Purpose
 
-The PreciousGPT backend is a **simulation layer** designed to power an investor-facing demo of a computational biology AI research platform. The backend accepts experiment parameters from the frontend, constructs scientifically-grounded prompts, routes them through locally-running LLMs via Ollama, parses and validates the structured JSON output, and returns it to the frontend in a format that drives all charts, tables, and dashboards.
+The WallahGPT backend is a **simulation layer** designed to power an investor-facing demo of a computational biology AI research platform. The backend accepts experiment parameters from the frontend, constructs scientifically-grounded prompts, routes them through locally-running LLMs via Ollama, parses and validates the structured JSON output, and returns it to the frontend in a format that drives all charts, tables, and dashboards.
 
 The system is explicitly **not** running real ML pipelines, GPU inference workers, or trained omics models. Instead, it leverages the general scientific knowledge encoded in instruction-tuned LLMs to produce plausible, structured biological data outputs — sufficient to demonstrate realistic platform behavior to investors and early users.
 
@@ -168,7 +168,7 @@ ollama list
 ### 4.1 Complete Folder Structure
 
 ```
-preciousgpt-backend/
+WallahGPT-backend/
 │
 ├── main.py                          # FastAPI app entry point
 ├── config.py                        # Settings (Pydantic BaseSettings)
@@ -180,9 +180,9 @@ preciousgpt-backend/
 ├── api/                             # API layer — routers only
 │   ├── __init__.py
 │   ├── deps.py                      # Shared dependencies (auth, model selection)
-│   ├── p1_router.py                 # Precious1GPT endpoints
-│   ├── p2_router.py                 # Precious2GPT endpoints
-│   ├── p3_router.py                 # Precious3GPT endpoints
+│   ├── p1_router.py                 # WallahGPT1 endpoints
+│   ├── p2_router.py                 # WallahGPT2 endpoints
+│   ├── p3_router.py                 # WallahGPT3 endpoints
 │   └── health_router.py             # Health check + model status
 │
 ├── controllers/                     # Orchestration — business logic
@@ -204,9 +204,9 @@ preciousgpt-backend/
 │
 ├── prompts/                         # Prompt templates
 │   ├── __init__.py
-│   ├── p1_prompts.py                # Precious1GPT prompt builder
-│   ├── p2_prompts.py                # Precious2GPT prompt builder
-│   └── p3_prompts.py                # Precious3GPT prompt builder
+│   ├── p1_prompts.py                # WallahGPT1 prompt builder
+│   ├── p2_prompts.py                # WallahGPT2 prompt builder
+│   └── p3_prompts.py                # WallahGPT3 prompt builder
 │
 ├── schemas/                         # Pydantic request/response models
 │   ├── __init__.py
@@ -267,13 +267,13 @@ logger = get_logger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    logger.info("PreciousGPT backend starting", model=settings.default_model)
+    logger.info("WallahGPT backend starting", model=settings.default_model)
     yield
-    logger.info("PreciousGPT backend shutting down")
+    logger.info("WallahGPT backend shutting down")
 
 
 app = FastAPI(
-    title="PreciousGPT API",
+    title="WallahGPT API",
     description="Computational Biology AI Platform — Simulation Backend",
     version="1.0.0",
     lifespan=lifespan
@@ -288,9 +288,9 @@ app.add_middleware(
 )
 
 app.include_router(health_router, prefix="/api", tags=["Health"])
-app.include_router(p1_router, prefix="/api/p1", tags=["Precious1GPT"])
-app.include_router(p2_router, prefix="/api/p2", tags=["Precious2GPT"])
-app.include_router(p3_router, prefix="/api/p3", tags=["Precious3GPT"])
+app.include_router(p1_router, prefix="/api/p1", tags=["WallahGPT1"])
+app.include_router(p2_router, prefix="/api/p2", tags=["WallahGPT2"])
+app.include_router(p3_router, prefix="/api/p3", tags=["WallahGPT3"])
 ```
 
 ### 5.2 config.py
@@ -323,7 +323,7 @@ class Settings(BaseSettings):
 settings = Settings()
 ```
 
-### 5.3 P1 Router — Precious1GPT
+### 5.3 P1 Router — WallahGPT1
 
 ```python
 # api/p1_router.py
@@ -353,7 +353,7 @@ async def predict_biological_age(request: P1Request):
         raise HTTPException(status_code=500, detail=f"Experiment failed: {str(e)}")
 ```
 
-### 5.4 P2 Router — Precious2GPT
+### 5.4 P2 Router — WallahGPT2
 
 ```python
 # api/p2_router.py
@@ -396,7 +396,7 @@ async def download_dataset(experiment_id: str):
     )
 ```
 
-### 5.5 P3 Router — Precious3GPT
+### 5.5 P3 Router — WallahGPT3
 
 ```python
 # api/p3_router.py
@@ -477,7 +477,7 @@ class ModelConfig(BaseModel):
     api_key: Optional[str] = None
 ```
 
-### 6.2 Precious1GPT Schemas
+### 6.2 WallahGPT1 Schemas
 
 ```python
 # schemas/p1_schemas.py
@@ -544,7 +544,7 @@ class P1Response(BaseModel):
     runtime_ms: int
 ```
 
-### 6.3 Precious2GPT Schemas
+### 6.3 WallahGPT2 Schemas
 
 ```python
 # schemas/p2_schemas.py
@@ -598,7 +598,7 @@ class P2Response(BaseModel):
     simulation_mode: bool = True
 ```
 
-### 6.4 Precious3GPT Schemas
+### 6.4 WallahGPT3 Schemas
 
 ```python
 # schemas/p3_schemas.py
@@ -873,7 +873,7 @@ Effective LLM prompting for structured output requires:
 4. **Negative constraints** ("Do not include any text outside the JSON")
 5. **Low temperature** (0.2–0.4) to reduce creative deviation from schema
 
-### 8.2 Precious1GPT Prompt Builder
+### 8.2 WallahGPT1 Prompt Builder
 
 ```python
 # prompts/p1_prompts.py
@@ -937,7 +937,7 @@ Disease probabilities must sum to less than 2.0.
 Use only real human gene names."""
 ```
 
-### 8.3 Precious2GPT Prompt Builder
+### 8.3 WallahGPT2 Prompt Builder
 
 ```python
 # prompts/p2_prompts.py
@@ -981,7 +981,7 @@ pca_variance_explained must have exactly 3 values that sum to less than 0.75.
 Quality metrics should reflect the noise level (lower quality for high noise)."""
 ```
 
-### 8.4 Precious3GPT Prompt Builder
+### 8.4 WallahGPT3 Prompt Builder
 
 ```python
 # prompts/p3_prompts.py
@@ -1473,7 +1473,7 @@ async def generate_with_retry(self, model: str, prompt: str,
 
 ## SECTION 12 — Example API Payloads & Responses
 
-### 12.1 Precious1GPT — Request
+### 12.1 WallahGPT1 — Request
 
 ```bash
 curl -X POST http://localhost:8000/api/p1/predict-age \
@@ -1492,7 +1492,7 @@ curl -X POST http://localhost:8000/api/p1/predict-age \
   }'
 ```
 
-### 12.2 Precious1GPT — Response
+### 12.2 WallahGPT1 — Response
 
 ```json
 {
@@ -1550,7 +1550,7 @@ curl -X POST http://localhost:8000/api/p1/predict-age \
 }
 ```
 
-### 12.3 Precious2GPT — Request
+### 12.3 WallahGPT2 — Request
 
 ```bash
 curl -X POST http://localhost:8000/api/p2/generate-data \
@@ -1568,7 +1568,7 @@ curl -X POST http://localhost:8000/api/p2/generate-data \
   }'
 ```
 
-### 12.4 Precious2GPT — Response
+### 12.4 WallahGPT2 — Response
 
 ```json
 {
@@ -1607,7 +1607,7 @@ curl -X POST http://localhost:8000/api/p2/generate-data \
 }
 ```
 
-### 12.5 Precious3GPT — Request
+### 12.5 WallahGPT3 — Request
 
 ```bash
 curl -X POST http://localhost:8000/api/p3/drug-screen \
@@ -1629,7 +1629,7 @@ curl -X POST http://localhost:8000/api/p3/drug-screen \
   }'
 ```
 
-### 12.6 Precious3GPT — Response
+### 12.6 WallahGPT3 — Response
 
 ```json
 {
@@ -1745,7 +1745,7 @@ SIMULATION_SEED=42
 ```bash
 # 1. Clone and set up
 git clone <repo>
-cd preciousgpt-backend
+cd WallahGPT-backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
@@ -1899,6 +1899,6 @@ PATHWAYS = [
 
 ---
 
-*End of PreciousGPT Backend Architecture Document v1.0.0*
+*End of WallahGPT Backend Architecture Document v1.0.0*
 
 *This document provides complete implementation guidance for the simulation backend. Engineers should implement sections in order following the Phase roadmap. All code samples are production-ready starting points — adapt to project conventions as needed. The architecture is explicitly designed to be replaced by real ML pipelines without frontend changes.*

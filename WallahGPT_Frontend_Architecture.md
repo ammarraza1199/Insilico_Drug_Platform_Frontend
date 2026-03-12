@@ -1,4 +1,4 @@
-# PreciousGPT Platform — Frontend Architecture Document
+# WallahGPT Platform — Frontend Architecture Document
 
 **Document Type:** Frontend Architecture Specification  
 **Version:** 1.0.0  
@@ -29,7 +29,7 @@
 
 ### 1.1 Purpose
 
-PreciousGPT is an AI-powered computational biology research platform designed to replace or supplement wet laboratory pre-clinical experimentation with in-silico digital simulation. Inspired by Insilico Medicine's Large Language of Life Models (LLLM) ecosystem, the platform leverages multi-omics AI models to enable researchers to run biological experiments computationally — dramatically reducing time, cost, and ethical constraints associated with physical laboratory work.
+WallahGPT is an AI-powered computational biology research platform designed to replace or supplement wet laboratory pre-clinical experimentation with in-silico digital simulation. Inspired by Insilico Medicine's Large Language of Life Models (LLLM) ecosystem, the platform leverages multi-omics AI models to enable researchers to run biological experiments computationally — dramatically reducing time, cost, and ethical constraints associated with physical laboratory work.
 
 The platform addresses three distinct scientific challenges:
 
@@ -39,9 +39,9 @@ The platform addresses three distinct scientific challenges:
 
 ### 1.2 The Three AI Systems
 
-#### System 1 — Precious1GPT: Biological Aging Clock
+#### System 1 — WallahGPT1: Biological Aging Clock
 
-Precious1GPT is a multi-modal biological age prediction engine. It ingests molecular data — primarily DNA methylation arrays and RNA-seq gene expression matrices — and outputs a predicted biological age alongside clinical insights. This system is valuable for aging research, disease classification, and identifying therapeutic targets.
+WallahGPT1 is a multi-modal biological age prediction engine. It ingests molecular data — primarily DNA methylation arrays and RNA-seq gene expression matrices — and outputs a predicted biological age alongside clinical insights. This system is valuable for aging research, disease classification, and identifying therapeutic targets.
 
 | Attribute | Detail |
 |-----------|--------|
@@ -50,9 +50,9 @@ Precious1GPT is a multi-modal biological age prediction engine. It ingests molec
 | **Key Outputs** | Predicted biological age, age acceleration score, disease classification probabilities, SHAP gene importance ranking, therapeutic target genes |
 | **Users** | Aging researchers, bioinformaticians, clinicians, drug discovery analysts |
 
-#### System 2 — Precious2GPT: Synthetic Multi-Omics Data Generator
+#### System 2 — WallahGPT2: Synthetic Multi-Omics Data Generator
 
-Precious2GPT is a generative AI system that produces synthetic biological datasets statistically indistinguishable from real multi-omics data. It enables researchers to generate datasets for rare tissue types, extreme age ranges, or multi-species experiments that do not exist in public repositories.
+WallahGPT2 is a generative AI system that produces synthetic biological datasets statistically indistinguishable from real multi-omics data. It enables researchers to generate datasets for rare tissue types, extreme age ranges, or multi-species experiments that do not exist in public repositories.
 
 | Attribute | Detail |
 |-----------|--------|
@@ -61,9 +61,9 @@ Precious2GPT is a generative AI system that produces synthetic biological datase
 | **Key Outputs** | Synthetic gene expression matrices, methylation datasets, downloadable omics files |
 | **Users** | Data scientists, AI researchers, computational biologists, pharmaceutical teams |
 
-#### System 3 — Precious3GPT: Digital Drug Discovery Engine
+#### System 3 — WallahGPT3: Digital Drug Discovery Engine
 
-Precious3GPT simulates drug perturbation experiments in silico. Researchers can input target disease conditions, gene expression profiles, and candidate compound structures (SMILES notation) to identify how drugs would alter gene expression. This acts as a virtual pre-clinical laboratory.
+WallahGPT3 simulates drug perturbation experiments in silico. Researchers can input target disease conditions, gene expression profiles, and candidate compound structures (SMILES notation) to identify how drugs would alter gene expression. This acts as a virtual pre-clinical laboratory.
 
 | Attribute | Detail |
 |-----------|--------|
@@ -80,13 +80,13 @@ The following workflows represent primary use cases the platform must support:
 A clinician uploads a patient's DNA methylation data from a blood sample. The system predicts biological age, computes age acceleration relative to chronological age, and highlights genes associated with accelerated aging. The researcher exports a full SHAP analysis report.
 
 **Use Case B — Rare Dataset Generation**  
-A pharmaceutical team needs liver transcriptome data for a 75-year-old cohort — data unavailable in public repositories. Using Precious2GPT, they configure tissue type, age range, and number of samples, then download a statistically valid synthetic dataset for downstream AI model training.
+A pharmaceutical team needs liver transcriptome data for a 75-year-old cohort — data unavailable in public repositories. Using WallahGPT2, they configure tissue type, age range, and number of samples, then download a statistically valid synthetic dataset for downstream AI model training.
 
 **Use Case C — Computational Drug Screening**  
-A drug discovery analyst wants to identify compounds that reverse age-related gene expression changes in brain tissue. They input the target expression signatures and run Precious3GPT to receive a ranked list of candidate compounds with predicted efficacy scores.
+A drug discovery analyst wants to identify compounds that reverse age-related gene expression changes in brain tissue. They input the target expression signatures and run WallahGPT3 to receive a ranked list of candidate compounds with predicted efficacy scores.
 
 **Use Case D — Cross-System Research Pipeline**  
-An aging researcher runs Precious1GPT to identify age-accelerated tissue types, uses Precious2GPT to generate additional data for underrepresented cohorts, then feeds the results into Precious3GPT to identify therapeutic interventions — a complete end-to-end in-silico experiment pipeline.
+An aging researcher runs WallahGPT1 to identify age-accelerated tissue types, uses WallahGPT2 to generate additional data for underrepresented cohorts, then feeds the results into WallahGPT3 to identify therapeutic interventions — a complete end-to-end in-silico experiment pipeline.
 
 ### 1.4 Typical Research Workflows
 
@@ -102,7 +102,7 @@ An aging researcher runs Precious1GPT to identify age-accelerated tissue types, 
 
 ### 2.1 Purpose of the Frontend Prototype
 
-The frontend prototype serves as the complete user-facing interface of the PreciousGPT platform during its initial development phase. At this stage, no production backend infrastructure, ML inference pipelines, or GPU workers are available. The frontend must:
+The frontend prototype serves as the complete user-facing interface of the WallahGPT platform during its initial development phase. At this stage, no production backend infrastructure, ML inference pipelines, or GPU workers are available. The frontend must:
 
 - Deliver a fully functional user experience using mock APIs and simulated data
 - Enable product validation with real research users before backend investment
@@ -226,9 +226,9 @@ pnpm is significantly faster than npm and yarn for installation, uses a content-
 | Dashboard | `/dashboard` | User home — active projects, recent experiments, quick launch |
 | Project Workspace | `/projects/:projectId` | Project-level view with experiment list and metadata |
 | Experiment Builder | `/experiment/new` | Step-by-step experiment configuration wizard |
-| Precious1GPT Module | `/experiment/p1/:id` | Aging clock input, run, and results UI |
-| Precious2GPT Module | `/experiment/p2/:id` | Synthetic data generator UI |
-| Precious3GPT Module | `/experiment/p3/:id` | Drug discovery engine UI |
+| WallahGPT1 Module | `/experiment/p1/:id` | Aging clock input, run, and results UI |
+| WallahGPT2 Module | `/experiment/p2/:id` | Synthetic data generator UI |
+| WallahGPT3 Module | `/experiment/p3/:id` | Drug discovery engine UI |
 | Model Selection Panel | `/settings/models` | User model configuration and API key management |
 | Results Viewer | `/results/:experimentId` | Full-screen results dashboard for a completed experiment |
 | Experiment History | `/history` | Paginated history of all experiments with filtering and search |
@@ -243,9 +243,9 @@ Landing Page
             └── Dashboard
                     ├── Project Workspace
                     │       └── Experiment Builder (System Selector)
-                    │               ├── Precious1GPT Module → Results Viewer
-                    │               ├── Precious2GPT Module → Results Viewer
-                    │               └── Precious3GPT Module → Results Viewer
+                    │               ├── WallahGPT1 Module → Results Viewer
+                    │               ├── WallahGPT2 Module → Results Viewer
+                    │               └── WallahGPT3 Module → Results Viewer
                     ├── Experiment History
                     │       └── Results Viewer (any past experiment)
                     ├── Model Selection Panel
@@ -336,7 +336,7 @@ The global model settings page provides a full management interface:
 A card showing the currently active default model. Users can click "Change" to open the model selector modal.
 
 **Section B — Per-System Overrides**  
-A three-panel accordion showing Precious1GPT, Precious2GPT, and Precious3GPT — each with an option to either inherit the global default or configure a system-specific model.
+A three-panel accordion showing WallahGPT1, WallahGPT2, and WallahGPT3 — each with an option to either inherit the global default or configure a system-specific model.
 
 **Section C — Saved Model Profiles**  
 A table of named model configurations (e.g., "GPT-4o High Precision", "Local Llama3 Fast") that can be saved, reused, and assigned. Users can create, edit, duplicate, and delete profiles.
@@ -401,7 +401,7 @@ Real API forwards config to inference backend (Phase 2)
 
 ## SECTION 6 — Module Design for Each System
 
-### 6.1 Precious1GPT Module — Biological Aging Clock
+### 6.1 WallahGPT1 Module — Biological Aging Clock
 
 **Route:** `/experiment/p1/:experimentId`
 
@@ -481,7 +481,7 @@ The results panel occupies the right 60% of the screen and renders after job com
 
 ---
 
-### 6.2 Precious2GPT Module — Synthetic Multi-Omics Data Generator
+### 6.2 WallahGPT2 Module — Synthetic Multi-Omics Data Generator
 
 **Route:** `/experiment/p2/:experimentId`
 
@@ -550,7 +550,7 @@ The results panel occupies the right 60% of the screen and renders after job com
 
 ---
 
-### 6.3 Precious3GPT Module — Digital Drug Discovery Engine
+### 6.3 WallahGPT3 Module — Digital Drug Discovery Engine
 
 **Route:** `/experiment/p3/:experimentId`
 
@@ -567,7 +567,7 @@ The results panel occupies the right 60% of the screen and renders after job com
   - Mode selector: Upload File | Manual Entry | Load from P1 Results
   - If Upload: Dropzone accepting CSV/TSV with gene name + expression level columns
   - If Manual Entry: Dynamic row table (add gene, expression level, direction: Up/Down/Any)
-  - If Load from P1: Dropdown selecting a past Precious1GPT experiment's gene targets
+  - If Load from P1: Dropdown selecting a past WallahGPT1 experiment's gene targets
 
 **Compound Input (Optional)**
 - Compound SMILES input (textarea — with syntax validation indicator)
@@ -694,7 +694,7 @@ All mock API logic is implemented using **Mock Service Worker (MSW)** in develop
 ```
 VITE_API_MODE=mock        # Use MSW mock handlers
 VITE_API_MODE=live        # Use real backend
-VITE_API_BASE_URL=https://api.preciousgpt.com
+VITE_API_BASE_URL=https://api.WallahGPT.com
 ```
 
 ### 8.2 Authentication Endpoints
@@ -716,7 +716,7 @@ POST /api/auth/logout
 Response: { success: true }
 ```
 
-### 8.3 Precious1GPT Endpoints
+### 8.3 WallahGPT1 Endpoints
 
 ```
 POST /api/p1/predict-age
@@ -772,7 +772,7 @@ GET /api/p1/jobs/:jobId/status
 Response: { jobId: string, progress: 0-100, stage: string, eta: number }
 ```
 
-### 8.4 Precious2GPT Endpoints
+### 8.4 WallahGPT2 Endpoints
 
 ```
 POST /api/p2/generate-data
@@ -826,7 +826,7 @@ Response:
 }
 ```
 
-### 8.5 Precious3GPT Endpoints
+### 8.5 WallahGPT3 Endpoints
 
 ```
 POST /api/p3/drug-screen
@@ -926,7 +926,7 @@ To simulate realistic async behavior, MSW handlers use randomized delays:
 ### 9.1 Complete Folder Structure
 
 ```
-preciousgpt-frontend/
+WallahGPT-frontend/
 ├── public/
 │   ├── favicon.ico
 │   ├── robots.txt
@@ -936,9 +936,9 @@ preciousgpt-frontend/
 │   ├── api/                           # API service layer
 │   │   ├── client.ts                  # Axios instance with interceptors
 │   │   ├── auth.api.ts                # Auth endpoints
-│   │   ├── p1.api.ts                  # Precious1GPT endpoints
-│   │   ├── p2.api.ts                  # Precious2GPT endpoints
-│   │   ├── p3.api.ts                  # Precious3GPT endpoints
+│   │   ├── p1.api.ts                  # WallahGPT1 endpoints
+│   │   ├── p2.api.ts                  # WallahGPT2 endpoints
+│   │   ├── p3.api.ts                  # WallahGPT3 endpoints
 │   │   ├── projects.api.ts            # Project CRUD
 │   │   ├── experiments.api.ts         # Experiment history
 │   │   └── admin.api.ts               # Admin endpoints
@@ -1116,7 +1116,7 @@ Biological AI experiments can take seconds to minutes. The UI must never leave u
 - Persistent progress bar in the experiment panel shows stages with labels (e.g., "Running model inference... 67%")
 - Users can navigate away — experiment status persists and is shown in the top notification bar
 - A "Jobs Running" indicator in the top nav shows active experiment count with a spinner
-- Browser tab title updates: "PreciousGPT — Running P1 Experiment (67%)"
+- Browser tab title updates: "WallahGPT — Running P1 Experiment (67%)"
 - On completion, a browser notification (if permission granted) and an in-app toast alert
 
 **Principle 2 — Configuration Reproducibility**  
@@ -1210,7 +1210,7 @@ The experiment history page provides:
 
 ---
 
-### Phase 2 — Precious1GPT UI (Week 3–4)
+### Phase 2 — WallahGPT1 UI (Week 3–4)
 
 **Deliverables:**
 - P1 experiment page layout (split-panel: input left, results right)
@@ -1230,7 +1230,7 @@ The experiment history page provides:
 
 ---
 
-### Phase 3 — Precious2GPT UI (Week 5–6)
+### Phase 3 — WallahGPT2 UI (Week 5–6)
 
 **Deliverables:**
 - P2 experiment page layout
@@ -1247,7 +1247,7 @@ The experiment history page provides:
 
 ---
 
-### Phase 4 — Precious3GPT UI (Week 7–8)
+### Phase 4 — WallahGPT3 UI (Week 7–8)
 
 **Deliverables:**
 - P3 experiment page layout
@@ -1323,7 +1323,7 @@ The experiment history page provides:
 The frontend API layer (`/src/api/`) is designed for zero-friction backend integration. Each API module exports typed async functions that call specific endpoints. To connect to a real FastAPI backend:
 
 1. Set `VITE_API_MODE=live` in the production environment file
-2. Set `VITE_API_BASE_URL` to the FastAPI base URL (e.g., `https://api.preciousgpt.com`)
+2. Set `VITE_API_BASE_URL` to the FastAPI base URL (e.g., `https://api.WallahGPT.com`)
 3. Remove MSW service worker initialization from `main.tsx`
 4. Ensure FastAPI CORS configuration allows the frontend origin
 
@@ -1461,21 +1461,21 @@ interface P1Results {
 ```bash
 # Development (.env.development)
 VITE_API_MODE=mock
-VITE_APP_TITLE=PreciousGPT Platform (Dev)
+VITE_APP_TITLE=WallahGPT Platform (Dev)
 VITE_MOCK_JOB_DELAY_P1=10000
 VITE_MOCK_JOB_DELAY_P2=30000
 VITE_MOCK_JOB_DELAY_P3=20000
 
 # Production (.env.production)
 VITE_API_MODE=live
-VITE_API_BASE_URL=https://api.preciousgpt.com
-VITE_APP_TITLE=PreciousGPT Platform
+VITE_API_BASE_URL=https://api.WallahGPT.com
+VITE_APP_TITLE=WallahGPT Platform
 VITE_SENTRY_DSN=https://...
 VITE_ANALYTICS_ID=G-XXXXXXXXXX
 ```
 
 ---
 
-*End of PreciousGPT Frontend Architecture Document v1.0.0*
+*End of WallahGPT Frontend Architecture Document v1.0.0*
 
 *This document is intended for use by engineering teams, code generation systems, and platform architects. All API contracts, type definitions, and architectural decisions described herein should be treated as binding specifications for the initial frontend implementation.*
