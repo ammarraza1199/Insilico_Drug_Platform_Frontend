@@ -592,8 +592,8 @@ graph TD
 
     subgraph REGISTRY ["⚙️ Backend — model_registry.py"]
         R_VALIDATE["validate_model(model_name)"]
-        R_WHITELIST{{"Whitelist Check"}}
-        R_NORMALIZE["Normalize ID\nlowercase + strip"}]
+        R_WHITELIST{"Whitelist Check"}
+        R_NORMALIZE["Normalize ID\nlowercase + strip"]
         R_DEFAULT["Fallback: settings.default_model\n= phi3"]
         R_VALIDATE --> R_WHITELIST
         R_WHITELIST -->|Known model| R_NORMALIZE
