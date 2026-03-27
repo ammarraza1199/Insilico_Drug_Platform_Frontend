@@ -1,6 +1,6 @@
-# WallahGPT — In-Silico Drug Discovery & Omics Platform
+# Large Language of Life Models (LLLMS) — In-Silico Drug Discovery & Omics Platform
 
-**WallahGPT** (formerly PreciousGPT) is a state-of-the-art computational biology platform designed for in-silico simulation of biological experiments. It leverages Large Language Models (LLMs) and advanced statistical simulation to provide researchers with a digital laboratory for biological aging analysis, synthetic data generation, and drug discovery.
+**Large Language of Life Models (LLLMS)** (formerly PreciousGPT) is a state-of-the-art computational biology platform designed for in-silico simulation of biological experiments. It leverages Large Language Models (LLMs) and advanced statistical simulation to provide researchers with a digital laboratory for biological aging analysis, synthetic data generation, and drug discovery.
 
 The platform features a **ZeroKost Premium** design system, utilizing a futuristic dark theme, glassmorphic UI elements, and high-performance animations powered by `framer-motion`.
 
@@ -103,15 +103,15 @@ sequenceDiagram
 
 ## 🧬 Core Modules
 
-### 1. WallahGPT1: Biological Aging Clock
+### 1. LifespanAI: Biological Aging Clock
 Predicts biological age from molecular data (DNA methylation, RNA-seq). 
 - **Output**: Age acceleration score, SHAP gene importance, and disease risk classification.
 
-### 2. WallahGPT2: Synthetic Omics Generator
+### 2. Clinomics Engine: Synthetic Omics Generator
 Generates statistically valid synthetic multi-omics datasets.
 - **Output**: Downloadable CSV/TSV matrices with preserved correlation structures.
 
-### 3. WallahGPT3: Digital Drug Discovery
+### 3. Multispecies & Tissue Engine: Digital Drug Discovery
 Simulates drug perturbation experiments in-silico.
 - **Output**: Ranked drug candidates, predicted gene expression changes, and pathway enrichment.
 
@@ -156,5 +156,5 @@ Simulates drug perturbation experiments in-silico.
 ---
 
 ## 📜 Documentation
-- [Backend Architecture](file:///c:/Users/DELL/Downloads/ZeroKost/PreciousGPT/PreciousGPT_Code/WallahGPT_Backend_Architecture.md)
-- [Frontend Architecture](file:///c:/Users/DELL/Downloads/ZeroKost/PreciousGPT/PreciousGPT_Code/WallahGPT_Frontend_Architecture.md)
+- [Backend Architecture](file:///c:/Users/DELL/Downloads/ZeroKost/PreciousGPT/PreciousGPT_Code/Large Language of Life Models (LLLMS)_Backend_Architecture.md)
+- [Frontend Architecture](file:///c:/Users/DELL/Downloads/ZeroKost/PreciousGPT/PreciousGPT_Code/Large Language of Life Models (LLLMS)_Frontend_Architecture.md)

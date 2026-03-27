@@ -1,10 +1,10 @@
-# WallahGPT Test Scenarios
+# Large Language of Life Models (LLLMS) Test Scenarios
 
 Use these settings to verify the end-to-end pipeline functionality for each AI system.
 
 ---
 
-## 🧪 WallahGPT1: Aging Clock
+## 🧪 LifespanAI: Aging Clock
 **Goal:** Predict biological age from methylation data.
 
 **Field Inputs:**
@@ -19,7 +19,7 @@ Use these settings to verify the end-to-end pipeline functionality for each AI s
 
 ---
 
-## 🧪 WallahGPT2: Data Synthesis
+## 🧪 Clinomics Engine: Data Synthesis
 **Goal:** Generate synthetic multi-omics data for disease modeling.
 
 **Field Inputs:**
@@ -36,7 +36,7 @@ Use these settings to verify the end-to-end pipeline functionality for each AI s
 
 ---
 
-## 🧪 WallahGPT3: Drug Discovery
+## 🧪 Multispecies & Tissue Engine: Drug Discovery
 **Goal:** Screen compounds against target gene signatures.
 
 **Field Inputs:**
